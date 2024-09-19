@@ -1,3 +1,4 @@
+## Intro Commands
 ``cd``  - Changes directory, you can use this to traverse almost anywhere on the filesystem.
 Manual Page: https://man7.org/linux/man-pages/man1/cd.1p.html
 - ``cd DIRECTORY`` > Moves into this directory.
