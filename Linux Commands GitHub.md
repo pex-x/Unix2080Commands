@@ -67,3 +67,68 @@ Manual Page: https://man7.org/linux/man-pages/man1/printenv.1.html
 ``ps`` - A command that shows processes that are executing in the system.
 Manual Page: https://man7.org/linux/man-pages/man1/ps.1.html
 -  Basic Syntax: ``ps``
+
+## VIM Basics:
+There are a few modes total in Vim, Replace, Command, Insert, Normal, and Visual Mode. It all  
+is fairly straightforward, as they do mostly what their names suggest.  
+
+``Normal``: Normal is the default mode of Vim. There are commands specific to normal that we  
+can execute to!  
+	- ``r`` replaces characters  
+	- ``x`` deletes characters  
+	- ``u`` undos edits  
+	Shortcut - Normal: ``ESC`` 
+ 
+``Insert``: Characters typed in will be put on the file like a text editor.  
+	Shortcut - Insert: ``i`` OR ``ESC + i``  
+
+``Command``: Write, and exit are found here. Allows us to execute Vim Commands.  
+
+
+``Visual``: Works as a highlighter, makes selections of text. 
+	Shortcut - ``v`` OR ESC + ``v``  
+
+``Replace``: Replace text by writing over it.  
+	Shortcut - ``R`` OR ``ESC + R `` 
+
+By default, Vim starts in Normal Mode.
+
+
+### Basic Commands for VIM
+**You must be in Normal Mode to run these commands.**
+Cut: ``dd`` or ``D``. The difference is one goes to the end of line  
+
+Copy: ``yy``
+
+Paste: ``p`` 
+
+Delete: ``dd`` 
+
+Up: ``k`` OR ``Up Arrow`` 
+
+Down: ``j`` OR ``Down Arrow``  
+
+Sideways Left: ``h`` OR ``Left Arrow`` 
+
+Sideways Right: ``l`` OR ``Right Arrow`` 
+
+Page Up: ``CTRL + B``  
+
+Page Down: ``CTRL + F `` 
+
+Top: ``gg``  
+
+End: ``G``  
+
+Start Of Line: ``0``  
+
+End Of Line: ``$``  
+
+**You must be in Command Mode to run these commands.**
+Write: ``:w`` OR ``:w NAME_OF_FILE`` (if first time saving.)  
+
+Quit: ``:q`` OR ``:q!`` OR ``:qa!``  
+
+Line Number: ``:set nu``  
+
+Search Text: ``/WORD_TO_SEARCH``
