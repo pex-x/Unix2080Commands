@@ -94,8 +94,9 @@ can execute to!
 By default, Vim starts in Normal Mode.
 
 
-### Basic Commands for VIM
+## Basic Commands for VIM
 **You must be in Normal Mode to run these commands.**
+
 Cut: ``dd`` or ``D``. The difference is one goes to the end of line  
 
 Copy: ``yy``
@@ -125,6 +126,7 @@ Start Of Line: ``0``
 End Of Line: ``$``  
 
 **You must be in Command Mode to run these commands.**
+
 Write: ``:w`` OR ``:w NAME_OF_FILE`` (if first time saving.)  
 
 Quit: ``:q`` OR ``:q!`` OR ``:qa!``  
