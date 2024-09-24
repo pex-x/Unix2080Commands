@@ -1,3 +1,22 @@
+## Terms discussed in class:
+**Operating System**: The OS is a resource  
+manager, software that sits between the user and the hardware, the housekeeper of the machine,  
+or an extension of the hardware.
+
+**Process**: A process is formally described as an executing program, process inherits a UID.
+
+**UID**: The User ID. Each User has one as an identifier
+
+**Group**: Grouping Users with separate permissions.
+
+**Superuser**: The highest group users can be a part of! 
+
+**BASH**: The Bourne Again Shell, the most common shell flavors.
+
+**Shell**: A Shell is the interpreter in UNIX that allows programming a set of actions. The Shell is accessed through the Command Line Interface. 
+
+**Session**: A session in a Terminal Application, is an instance of the terminal program. They are isolated from one another.
+
 ## Intro Commands
 ``cd``  - Changes directory, you can use this to traverse almost anywhere on the filesystem.
 Manual Page: https://man7.org/linux/man-pages/man1/cd.1p.html
@@ -135,3 +154,5 @@ Quit: ``:q`` OR ``:q!`` OR ``:qa!``
 Line Number: ``:set nu``  
 
 Search Text: ``/WORD_TO_SEARCH``
+
+https://vimsheet.com/
