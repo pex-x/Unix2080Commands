@@ -156,3 +156,60 @@ Line Number: ``:set nu``
 Search Text: ``/WORD_TO_SEARCH``
 
 https://vimsheet.com/
+
+### Midterm Prep
+OS - Operating System
+OSS - Open Source Software
+FOSS - Free Open Source Software
+FLOSS - Free/Libre Open Source Software.
+GNU - Gnu's not Unix.
+PCB - Process Control Block
+MMU - Memory Management Unit
+CLI - Command Line Interface
+AWS - Amazon Web Services
+RTT - Round Trip Time
+Distro - Distribution
+
+Top Down:
+**User Space:** All user Libraries Live Here. GNOME, the windowing system/GUI interface, lives here
+	**Application Layer**:
+		Command Interpreter: Uses Utilities, such as Libraries, Utilities, and and all other User Programs / Modules. GNU provides functionality.  I.E, BASH 
+		**Library Calls** makes calls directly from the user program to Library, Util, and User Programs. AKA, deals with Libraries.
+**Kernel Space**:
+	**System Calls** or Sys Calls make calls by requesting something from the Kernel.
+		File System, Memory Management, Schedulers, Device Drivers. These deal with the Lower Layer.
+**Hardware Layer**:
+		Disc, Peripherals, RAM
+			Virtual Memory.
+
+Practice VIM!
+
+What is a Cloud System:
+A virtualized computer that operates over the internet to provide computing services.
+
+How does AWS provide us something without Privacy Issues.
+- Virtualized Cloud Partition, Memory Isolation, Disk Isolation, Secure Communication Protocols for Users, and device encryption.
+
+What is SSH? How does it relate to remote/cloud computing?
+- Secure Shell. A protocol for communication with a remote computer system.
+	- Some Examples: PuTTy, OpenSSH.
+
+**Virtual Memory:**
+Virtual Memory is an Abstraction for the main memory which is a scrambled memory block that contains Page Frames, and extends the main memory space. When main memory is full, Overloading is an issue, but swapping and virtual memory is the solution.
+	- Swapping it takes the entire memory block related to a process and puts it in the disk.
+	- Virtual Memory slices the memory into Pages (Fixed size block of memory that can pick up or store in disk if needed.)
+
+Process:
+- Process comes with a PID. A process is identified with a PID, and with permissions, a GID, and UID. GID and UID are inherited from the User Profile that is executing the commands. If the process creates another process, it inherent from its parent process.
+- Inside of Virtual Memory, and Processes, they are stored in the Address Space.
+- The GID, UID, PPID, PID, and Address Space is stored in the Process Control Block (PCB).
+
+IPC:
+- Pipes, Message Queues, Shared Memory, Semaphores.
+- Pipes are where the exam focuses the most on. Pipes are:
+	- Unstructured: A stream of data. (As opposed to MQ)
+	- Uni-Directional: If P1 has to communicate with P2, P1 Writes, P2 Reads.
+
+BASH, or Shell, is the interpreter of commands from the Terminal. Session Variable is specific to one instance of a terminal, an Environment Variable will not inherent all  Session Variable.
+- ``export var="Something"``
+- Options are long short.
