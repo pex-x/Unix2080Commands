@@ -1,4 +1,7 @@
 ## Terms discussed in class:
+**Main Idea of Open Source** 
+The main idea behind open-source is to allow users to see the code they trust for their workflow.
+
 **Operating System**: The OS is a resource  
 manager, software that sits between the user and the hardware, the housekeeper of the machine,  
 or an extension of the hardware.
@@ -159,15 +162,25 @@ https://vimsheet.com/
 
 ### Midterm Prep
 OS - Operating System
+
 OSS - Open Source Software
+
 FOSS - Free Open Source Software
+
 FLOSS - Free/Libre Open Source Software.
+
 GNU - Gnu's not Unix.
+
 PCB - Process Control Block
+
 MMU - Memory Management Unit
+
 CLI - Command Line Interface
+
 AWS - Amazon Web Services
+
 RTT - Round Trip Time
+
 Distro - Distribution
 
 Top Down:
@@ -184,13 +197,13 @@ Top Down:
 
 Practice VIM!
 
-What is a Cloud System:
+**What is a Cloud System:**
 A virtualized computer that operates over the internet to provide computing services.
 
-How does AWS provide us something without Privacy Issues.
+**How does AWS provide us something without Privacy Issues?**
 - Virtualized Cloud Partition, Memory Isolation, Disk Isolation, Secure Communication Protocols for Users, and device encryption.
 
-What is SSH? How does it relate to remote/cloud computing?
+**What is SSH? How does it relate to remote/cloud computing?**
 - Secure Shell. A protocol for communication with a remote computer system.
 	- Some Examples: PuTTy, OpenSSH.
 
@@ -199,17 +212,36 @@ Virtual Memory is an Abstraction for the main memory which is a scrambled memory
 	- Swapping it takes the entire memory block related to a process and puts it in the disk.
 	- Virtual Memory slices the memory into Pages (Fixed size block of memory that can pick up or store in disk if needed.)
 
-Process:
+**Process:**
 - Process comes with a PID. A process is identified with a PID, and with permissions, a GID, and UID. GID and UID are inherited from the User Profile that is executing the commands. If the process creates another process, it inherent from its parent process.
 - Inside of Virtual Memory, and Processes, they are stored in the Address Space.
 - The GID, UID, PPID, PID, and Address Space is stored in the Process Control Block (PCB).
 
-IPC:
+**IPC:**
 - Pipes, Message Queues, Shared Memory, Semaphores.
 - Pipes are where the exam focuses the most on. Pipes are:
 	- Unstructured: A stream of data. (As opposed to MQ)
 	- Uni-Directional: If P1 has to communicate with P2, P1 Writes, P2 Reads.
 
+**What the Shell?** 
 BASH, or Shell, is the interpreter of commands from the Terminal. Session Variable is specific to one instance of a terminal, an Environment Variable will not inherent all  Session Variable.
 - ``export var="Something"``
 - Options are long short.
+
+**What is an OS?:**
+An OS is an abstraction of the computer hardware. It manages the system
+resources and provides an interface for end users to interact with the system without
+knowing the specific implementation details
+
+**What is the difference between a kernel module and a user program?**
+A kernel module works in the kernel space and interacts with the hardware
+directly. On the other hand, the user program does not have direct access to the hardware, and it
+uses OS services by requesting the kernel for specific services through system calls. An end user
+generally interacts with the user program only and does not need to know or interact with the
+kernel modules directly
+
+**What is Epoch Time?**
+The midnight of January 1, 1970, is an important date for system engineers, and it is
+known as the UNIX epoch time. This date was picked as the start of time in UNIX
+systems, and all the time calculations in UNIX are based on the number of seconds
+elapsed from the epoch. 
