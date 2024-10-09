@@ -245,3 +245,109 @@ The midnight of January 1, 1970, is an important date for system engineers, and 
 known as the UNIX epoch time. This date was picked as the start of time in UNIX
 systems, and all the time calculations in UNIX are based on the number of seconds
 elapsed from the epoch. 
+
+## File Systems:
+**Why Use Unix?**: Customizable, familiar to developers, portable, gives more control! 
+
+**Unix Filesystems**: You can customize, but 
+different filesystems can change differently! 
+
+**Files In Unix?**: Any stream of Data, A sequence of Bytes.
+
+**Organized File System:** Unix has a hierarchical system, it starts from root directory, a special file partition /, /bin, /home, /usr, /bin.  
+
+**But what is a File System?**: A data structure that manages the entire disk. An abstraction of a Disk. A Kernel Module! 
+
+**Directory**: Collection of File/Collection of Bytes. If you decide to vim a directory, it will treat it as a file. 
+
+All Files have specific meta data, and Magic Numbers, which is the first few bits in Hex of the type of File.
+
+Permissions are asking about read, write, and execute for users.
+
+4 - Read
+2 - Write
+1 - Execute
+
+**Why are Permissions Needed?:** There can be multiple users in a system, and can allow access to a specific set of files.
+
+**How are files represented in ACLS?**: Users Groups, and Others! U, G, O 
+
+But there isn't just R W X, there is S, which is the SUID Flag! It helps us execute file with User Permissions. 
+
+Sticky Bits: At a directory level restricts file deletion. Only Owner can delete! 
+- At a File Level, it tells OS to retain Main Memory even after it's execution is over! t is the character flag to show a sticky bit.
+
+Super User!
+- Super User or the username root has special privileges and can override any file permissions in the system. Assign them to the Sudoers group!
+
+File Systems are implemented in Unix by:
+Boot Block -> Super Block -> INodes -> Data.
+
+How is this defined file system defined?: The more dynamic way of doing this is the first instruction, the starting address will tell you where to go next, and the next address will tell you how big it is. Once it is given an address, it will assume its the first address of a file system and finds out what file system it is, and based on that every file system will have a conf format. Inside binary data, you will see all the metadata built into the blocks of memory, finds the size of each block, and the location of the next block. All of it is stored and parsed using a data structure, can be stored using Tree, a self balanced tree, a binary tree.
+
+
+**File Systems: What is FS, How FS Work, Few Pop FS - Selecting FS**
+
+**Functions of a File System**: Stores Data, Organizes Files, Manipulate Data, Access Control to specific types of data. 
+
+**Size Based Categorization:** Bigger files gets priority
+
+**Hierarchy:** Can store many different sets of Data based on boxes, inside of boxes, inside of boxes. Root would be a room to store it in, each of the nodes are smaller bins, for example, home can hold many other things. 
+
+A filesystem also provides the how to, such as Algorithms, the file systems will have an algorithm to go through and traverse those specific boxes. Remember how we talked about trees? It will help traverse these trees algorithmically.
+
+-rw-r--r--  1 pex pex    47 Oct  7 13:13 permissions.txt
+
+We have our permission, then that number is a Hard Link: 
+File systems are organized by Super Block, iNodes, and the data! There are two types of links, Hard and Soft. Hard Links, file1 and file2. Lets assume file1 has a hard link to file2. A hard link points to the same iNode/Data. 
+
+Symbolic link or Soft Link is when file1 points to file2, where file2 has an iNode connected. File1 will have no content if file2 is deleted, because file2 is the only one hanging on the node. 
+
+The issue with sym links is that if you create another file2 with the same name in the same directory, it will point to the new file regardless, this is called **Hanging Links**
+
+
+Total is the number of data blocks it contains. It has a boot block, which is a basic thing of UFS. A super block (with a cape) which is the size of the entire data section, size of the iNodes, where to register data, and more! 
+
+The 'registry' is our iNodes. For example Device Info, INode Number, FIle Mode (Permission String), Link Count (Number of Hard Links/Pointers that point to this file to where it is located in the physical disk) , User Id, Group Id, Size, Timestamps.  
+
+
+Commands: 
+``stat``:  Stat will produce many different fields, but mainly the focus on creation date. A regular command looks like:
+```
+ File: permissions.txt
+  Size: 47              Blocks: 8          IO Block: 4096   regular file
+Device: 8,32    Inode: 9887        Links: 1
+Access: (0644/-rw-r--r--)  Uid: ( 1000/     pex)   Gid: ( 1000/     pex)
+Access: 2024-10-07 13:14:01.552348501 -0600
+Modify: 2024-10-07 13:13:52.282353296 -0600
+Change: 2024-10-07 13:13:52.282353296 -0600
+ Birth: 2024-10-07 13:13:52.282353296 -0600
+```
+The device field will tell you the hard drive where this is stored. Inode is the pointer to the Inode Index. The Link shows the number of Hard Links. There is also our access, UID, GID, access, modify, change, when it was made, and more! Change deals with the modification of file metadata (like permissions), modify deals with the actual contents of the file.
+
+``lsblk``:  Will list all current blocks of mem/disks.
+```
+NAME MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+sda    8:0    0 388.4M  1 disk
+sdb    8:16   0     4G  0 disk [SWAP]
+sdc    8:32   0     1T  0 disk /mnt/wslg/distro/
+```
+sda stands for storage device a. RM and RO stand for Read Modify and Read Only.
+
+``lsblk -f`` will show specific info on specific types.
+```
+NAME FSTYPE FSVER LABEL UUID FSAVAIL FSUSE% MOUNTPOINTS
+sda
+sdb                                         [SWAP]
+sdc                           950.7G     0% /mnt/wslg/distro
+```
+
+By default ubuntu ships with an EXT4 filesystem. The reason why you don't hit the number of files you can create, EXT4 allows unlimited subdirectories/unlimited depth.  If you have to many files, a device may run out of iNodes.
+
+``debugfs /dev/DRIVE`` will allow you to do disk analysis on a file system.
+
+``df -T`` does the same thing as ``logdump`` in debugfs.
+
+``file -sL /dev/sdc`` will show other information regarding type of File System.
+
+XFS is a journaling file system. EXT4 vs. XFS? XFS will support larger file systems (for something like Data Science) by the way the data is stored and traversed. BTRFS will be Better FS and uses B-Nodes/B-Tree File System. IMFS is a file system that is not on the disk, but entirely on the ram. If data is sensitive, you want a journaling file system.
