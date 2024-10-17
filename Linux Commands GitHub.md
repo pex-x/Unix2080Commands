@@ -1,3 +1,24 @@
+## Terms discussed in class:
+**Operating System**: The OS is a resource  
+manager, software that sits between the user and the hardware, the housekeeper of the machine,  
+or an extension of the hardware.
+
+**Process**: A process is formally described as an executing program, process inherits a UID.
+
+**UID**: The User ID. Each User has one as an identifier
+
+**Group**: Grouping Users with separate permissions.
+
+**Superuser**: The highest group users can be a part of! 
+
+**BASH**: The Bourne Again Shell, the most common shell flavors.
+
+**Shell**: A Shell is the interpreter in UNIX that allows programming a set of actions. The Shell is accessed through the Command Line Interface. 
+
+**Session**: A session in a Terminal Application, is an instance of the terminal program. They are isolated from one another.
+
+Cloud: A network of computers that allows users the freedom to not have a single point of failure.
+## Basic Commands:
 ``cd``  - Changes directory, you can use this to traverse almost anywhere on the filesystem.
 Manual Page: https://man7.org/linux/man-pages/man1/cd.1p.html
 - ``cd DIRECTORY`` > Moves into this directory.
@@ -64,9 +85,11 @@ Manual Page: https://man7.org/linux/man-pages/man1/echo.1.html
 Manual Page: https://man7.org/linux/man-pages/man1/printenv.1.html
 - Basic Syntax: ``printenv``
 
-``ps`` - A command that shows processes that are executing in the system.
+``ps`` - A command that shows processes that are executing in the system. (Particularly in the PCB)
 Manual Page: https://man7.org/linux/man-pages/man1/ps.1.html
 -  Basic Syntax: ``ps``
+
+-------------------------------------------------------------------------
 
 ## VIM Basics:
 There are a few modes total in Vim, Replace, Command, Insert, Normal, and Visual Mode. It all  
@@ -97,38 +120,274 @@ By default, Vim starts in Normal Mode.
 ### Basic Commands for VIM
 **You must be in Normal Mode to run these commands.**
 Cut: ``dd`` or ``D``. The difference is one goes to the end of line  
-
 Copy: ``yy``
-
 Paste: ``p`` 
-
 Delete: ``dd`` 
-
 Up: ``k`` OR ``Up Arrow`` 
-
 Down: ``j`` OR ``Down Arrow``  
-
-Sideways Left: ``h`` OR ``Left Arrow`` 
-
+Sideways Left: ``h`` OR ``Left Arrow``  
 Sideways Right: ``l`` OR ``Right Arrow`` 
-
 Page Up: ``CTRL + B``  
-
 Page Down: ``CTRL + F `` 
-
 Top: ``gg``  
-
-End: ``G``  
-
+End: ``G`` 
+Line Number: ``1G`` (First Line)
 Start Of Line: ``0``  
-
 End Of Line: ``$``  
 
 **You must be in Command Mode to run these commands.**
 Write: ``:w`` OR ``:w NAME_OF_FILE`` (if first time saving.)  
-
 Quit: ``:q`` OR ``:q!`` OR ``:qa!``  
-
 Line Number: ``:set nu``  
-
 Search Text: ``/WORD_TO_SEARCH``
+
+https://vimsheet.com/
+
+-------------------------------------------------------------------------------  
+## Midterm 1 Prep
+OS - Operating System
+OSS - Open Source Software
+FOSS - Free Open Source Software
+FLOSS - Free/Libre Open Source Software.
+GNU - Gnu's not Unix.
+PCB - Process Control Block
+MMU - Memory Management Unit
+CLI - Command Line Interface
+AWS - Amazon Web Services
+RTT - Round Trip Time
+Distro - Distribution
+
+Top Down:
+**User Space:** All user Libraries Live Here. GNOME, the windowing system/GUI interface, lives here
+	**Application Layer**:
+		Command Interpreter: Uses Utilities, such as Libraries, Utilities, and and all other User Programs / Modules. GNU provides functionality.  I.E, BASH 
+		**Library Calls** makes calls directly from the user program to Library, Util, and User Programs. AKA, deals with Libraries.
+**Kernel Space**:
+	**System Calls** or Sys Calls make calls by requesting something from the Kernel.
+		File System, Memory Management, Schedulers, Device Drivers. These deal with the Lower Layer.
+**Hardware Layer**:
+		Disc, Peripherals, RAM
+			Virtual Memory.
+
+Practice VIM!
+
+What is a Cloud System:
+A virtualized computer that operates over the internet to provide computing services.
+
+How does AWS provide us something without Privacy Issues.
+- Virtualized Cloud Partition, Memory Isolation, Disk Isolation, Secure Communication Protocols for Users, and device encryption.
+
+What is SSH? How does it relate to remote/cloud computing?
+- Secure Shell. A protocol for communication with a remote computer system.
+	- Some Examples: PuTTy, OpenSSH.
+
+**Virtual Memory:**
+Virtual Memory is an Abstraction for the main memory which is a scrambled memory block that contains Page Frames, and extends the main memory space. When main memory is full, Overloading is an issue, but swapping and virtual memory is the solution.
+	- Swapping it takes the entire memory block related to a process and puts it in the disk.
+	- Virtual Memory slices the memory into Pages (Fixed size block of memory that can pick up or store in disk if needed.)
+
+Process:
+- Process comes with a PID. A process is identified with a PID, and with permissions, a GID, and UID. GID and UID are inherited from the User Profile that is executing the commands. If the process creates another process, it inherent from its parent process.
+- Inside of Virtual Memory, and Processes, they are stored in the Address Space.
+- The GID, UID, PPID, PID, and Address Space is stored in the Process Control Block (PCB).
+
+IPC:
+- Pipes, Message Queues, Shared Memory, Semaphores.
+- Pipes are where the exam focuses the most on. Pipes are:
+	- Unstructured: A stream of data. (As opposed to MQ)
+	- Uni-Directional: If P1 has to communicate with P2, P1 Writes, P2 Reads.
+
+BASH, or Shell, is the interpreter of commands from the Terminal. Session Variable is specific to one instance of a terminal, an Environment Variable will not inherent all  Session Variable.
+- ``export var="Something"``
+- Options are long short.
+  
+-----------------------------------------------------------------------------
+  
+## File Systems:
+**Why Use Unix?**: Customizable, familiar to developers, portable, gives more control! 
+
+**Unix Filesystems**: You can customize, but 
+different filesystems can change differently! 
+
+**Files In Unix?**: Any stream of Data, A sequence of Bytes.
+
+**Organized File System:** Unix has a hierarchical system, it starts from root directory, a special file partition /, /bin, /home, /usr, /bin.  
+
+**But what is a File System?**: A data structure that manages the entire disk. An abstraction of a Disk. A Kernel Module! It does this according to Metadata of each files. 
+
+**Directory**: Collection of File/Collection of Bytes. If you decide to vim a directory, it will treat it as a file. 
+
+All Files have specific meta data, and Magic Numbers, which is the first few bits in Hex of the type of File.
+
+Permissions are asking about read, write, and execute for users.
+
+4 - Read
+2 - Write
+1 - Execute
+
+**Why are Permissions Needed?:** There can be multiple users in a system, and can allow access to a specific set of files.
+
+**How are files represented in ACLS?**: Users Groups, and Others! U, G, O 
+
+But there isn't just R W X, there is S, which is the SUID Flag! It helps us execute file with User Permissions. 
+
+Sticky Bits: At a directory level restricts file deletion. Only Owner can delete! 
+- At a File Level, it tells OS to retain Main Memory even after it's execution is over! t is the character flag to show a sticky bit.
+
+Super User!
+- Super User or the username root has special privileges and can override any file permissions in the system. Assign them to the Sudoers group!
+
+File Systems are implemented in Unix by: (EXAM QUESTION)
+**Boot Block -> Super Block -> INodes -> Data**.
+
+How is this defined file system defined?: The more dynamic way of doing this is the first instruction, the starting address will tell you where to go next, and the next address will tell you how big it is. Once it is given an address, it will assume its the first address of a file system and finds out what file system it is, and based on that every file system will have a conf format. Inside binary data, you will see all the metadata built into the blocks of memory, finds the size of each block, and the location of the next block. All of it is stored and parsed using a data structure, can be stored using Tree, a self balanced tree, a binary tree.
+
+
+**File Systems: What is FS, How FS Work, Few Pop FS - Selecting FS**
+
+**Functions of a File System**: Stores Data, Organizes Files, Manipulate Data, Access Control to specific types of data. 
+
+**Size Based Categorization:** Bigger files gets priority
+
+**Hierarchy:** Can store many different sets of Data based on boxes, inside of boxes, inside of boxes. Root would be a room to store it in, each of the nodes are smaller bins, for example, home can hold many other things. 
+
+A filesystem also provides the how to, such as Algorithms, the file systems will have an algorithm to go through and traverse those specific boxes. Remember how we talked about trees? It will help traverse these trees algorithmically.
+
+-rw-r--r--  1 pex pex    47 Oct  7 13:13 permissions.txt
+
+We have our permission, then that number is a Hard Link: 
+File systems are organized by Super Block, iNodes, and the data! There are two types of links, Hard and Soft. Hard Links, file1 and file2. Lets assume file1 has a hard link to file2. A hard link points to the same iNode/Data. 
+
+Symbolic link or Soft Link is when file1 points to file2, where file2 has an iNode connected. File1 will have no content if file2 is deleted, because file2 is the only one hanging on the node. 
+
+The issue with sym links is that if you create another file2 with the same name in the same directory, it will point to the new file regardless, this is called **Hanging Links**
+
+
+Total is the number of data blocks it contains. It has a boot block, which is a basic thing of UFS. A super block (with a cape) which is the size of the entire data section, size of the iNodes, where to register data, and more (Meta Data of the entire filesystem)
+
+iNodes are 1 to 1 mapped metadata for each file in the File System. 
+
+The 'registry' is our iNodes. For example Device Info, INode Number, FIle Mode (Permission String), Link Count (Number of Hard Links/Pointers that point to this file to where it is located in the physical disk) , User Id, Group Id, Size, Timestamps.  
+
+Commands: 
+``stat``:  Stat will produce many different fields, but mainly the focus on creation date. A regular command looks like:
+```
+ File: permissions.txt
+  Size: 47              Blocks: 8          IO Block: 4096   regular file
+Device: 8,32    Inode: 9887        Links: 1
+Access: (0644/-rw-r--r--)  Uid: ( 1000/     pex)   Gid: ( 1000/     pex)
+Access: 2024-10-07 13:14:01.552348501 -0600
+Modify: 2024-10-07 13:13:52.282353296 -0600
+Change: 2024-10-07 13:13:52.282353296 -0600
+ Birth: 2024-10-07 13:13:52.282353296 -0600
+```
+The device field will tell you the hard drive where this is stored. Inode is the pointer to the Inode Index. The Link shows the number of Hard Links. There is also our access, UID, GID, access, modify, change, when it was made, and more! Change deals with the modification of file metadata (like permissions), modify deals with the actual contents of the file.
+
+``lsblk``:  Will list all current blocks of mem/disks.
+```
+NAME MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+sda    8:0    0 388.4M  1 disk
+sdb    8:16   0     4G  0 disk [SWAP]
+sdc    8:32   0     1T  0 disk /mnt/wslg/distro/
+```
+sda stands for storage device a. RM and RO stand for Read Modify and Read Only.
+
+``lsblk -f`` will show specific info on specific types.
+```
+NAME FSTYPE FSVER LABEL UUID FSAVAIL FSUSE% MOUNTPOINTS
+sda
+sdb                                         [SWAP]
+sdc                           950.7G     0% /mnt/wslg/distro
+```
+
+By default ubuntu ships with an EXT4 filesystem. The reason why you don't hit the number of files you can create, EXT4 allows unlimited subdirectories/unlimited depth.  If you have to many files, a device may run out of iNodes.
+
+``debugfs /dev/DRIVE`` will allow you to do disk analysis on a file system.
+
+``df -T`` does the same thing as ``logdump`` in debugfs.
+
+``file -sL /dev/sdc`` will show other information regarding type of File System.
+
+XFS is a journaling file system. EXT4 vs. XFS? XFS will support larger file systems (for something like Data Science) by the way the data is stored and traversed. BTRFS will be Better FS and uses B-Nodes/B-Tree File System. IMFS is a file system that is not on the disk, but entirely on the ram. If data is sensitive, you want a journaling file system.
+
+Data At Rest: When your data is stored inside a cloud server (or multiple cloud servers) all files have to be protected. When nothing is happening with the data, how do we protect it? Encryption is the normal way, but many of the data blocks have multiple layers of encryption to avoid Single Points Of Failure. 
+
+Life of Storage Device: Defined as the max read write cycles it can handle without data corruption. Different Algos, have different implications of the Life of SD's. For example, BTRFS will put more Read Write Cycles on your device. 
+
+exFAT/FAT - exFAT evolved from FAT, interesting if you are working with Windows because it is one of the most portable File Systems. 
+
+Journaling File Systems have a system called Journals, when a Data Transaction is happening inside a system, there are many middle systems, it is heavier on the RW Cycles again, and SSDs are better for any journaling file systems. 
+
+EXT4 for many files.
+EX-FAT for multiple different types of systems/portability. Problem is that it doesn't have journaling implications. 
+XFS is for Data Science.
+
+What do Cloud Systems tend to use/How do the cloud systems use these drives for many user and prevent the amount of Storage Device.
+
+./ is a reference to a current directory. The way terminal works is it needs to know where the file is, and have an executable file. Look for a specific file name and try to execute it. 
+
+When a command is executed it knows where in the file system is located. For example /usr/sbin/useradd is located by ``which <command here>`` which locates commands.
+
+Commands:
+``chown`` changes the owner of the file. 
+``sudo -u USER`` will write using whatever user is executing the command! 
+``df`` and ``lsblk`` gets all info from iNodes, basically the same thing, and ``df -T`` will show in human readable format.
+
+File System is to keep a file organized.
+
+-----------------------------------
+
+**Exam Question:**
+How does a user access/create FS?
+Disk -> Partitions in the disk (Two types, Physical/Where Registers and shit are and Logical/A simplified version so that it is easier to access) -> File System -> and a Mount Point (Points to Logical Address) -> Mount the Filesystem -> cd into it and Mount Write.
+
+``disk``: The disk is the physical disk, has an ID, the hardware you have, where the data is written. Physical Partitioning happens here. 
+``deivce``: An abstraction on top of the disk, allows us to communicate with the disk. The user communicated with the disk through the device. Logical Partitioning happens here
+``mountpoint``: Link between device and disk.
+``volume``: This is also the Partition, the length of addresses, and an abstraction of a partition. Volumes also come with additional metadata. 
+``partition``: Splits the disk, 2 types, Physical l/Where Registers and shit are and Logical/A simplified version so that it is easier to access. 
+
+Syntax of Bash is no space between =, for example, loopdevname=~/blah wont execute! loopdevname = ~/blah
+
+-----------------------------------
+
+Virtual FileSystem vs Logical?: Virtual would be held entirely on RAM. 
+
+For DD: ``if`` is input, ``of`` is output file. Each Block size is 1024 (1KB), 51200 (Random Num). 
+
+``losetup`` will show the next free Loop Node. 
+
+``loopback device`` communicates with itself! 
+
+---------------------------------------------------------- 
+
+## Text Stream Editing:
+**What is a Stream**?: A stream is a non-segmented and not fixed length, it is also serial. 
+
+``grep``, unlike ``sed`` is a search tool! If we need to have a search with regular expression, use grep. grep works by 
+```
+grep [options] [pattern] [file]
+```
+
+``awk`` is a more robust scripting interface that is based off of the c programming language.
+```
+awk [pattern] [file]
+```
+
+**When to use sed**?: When you have unstructured data, and each line is undefined characters, spaces, literals, and more for each line.
+
+**When to use awk?**: When data is structured (like .csv files), data that's mapped into a row column structure, or a matrix-based structure. It also uses delimiters like commas, spaces, etc. 
+
+Syntax of sed: ``sed [options] "[some sort of microscript / define mode]" [filename] 
+
+**Exam Question**
+sed is also a 'modal text editor'. Different modes of sed are insert, search & replace, command, delete, and print mode.
+
+Print the 52nd Line of the File (the -n will limit to only this line aka making it quieter): ``sed "52p" [filename] -n ``
+
+A `` `sed "52p" [filename] -n` `` will run the command in a separate bash script, and it will evaluate in our terminal.
+
+----------------
+
+For loop in bash: ``for i in {1..1024}; do echo "hay" >> haystack; done``
+
