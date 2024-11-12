@@ -391,3 +391,74 @@ A `` `sed "52p" [filename] -n` `` will run the command in a separate bash script
 
 For loop in bash: ``for i in {1..1024}; do echo "hay" >> haystack; done``
 
+``
+
+CS2080: Bash
+Creating Users, Files, Creating files in filesystems.
+
+Discussed 2- 3 Important Things:
+#!/usr/bin/env bash
+Copyright Notice
+#* Means Comment.
+
+File Operations, how we can use all the file operations, using a loop, invoking a variable. Invoke a variable of an array. Used For Loops
+
+All Scripts are in scope, don't copy.
+Use while loop
+
+varName="something"
+If there was spaces, shell would interpret as command. "" Interprets as a string.
+
+which bash will tell you where the shebang goes
+
+echo ${varName}
+echo "Here is the Val: ${varName}"
+
+echo "Here is the Directory: $(pwd)"
+
+The use of special symbols to manipulate the variables is called shell expansion. Interpreted as command.
+
+```bash
+printit(){
+    echo "my name is $1" #Taking the first parameter passed
+    echo "Our names are  $*" #Taking all parameters
+}
+printit alice bob
+```
+
+**Version Control:** Git is the most popular one, authored by the same person who wrote the first Linux Kernel. 
+
+**Source Code:** Strings/Programs that is capable of running in an isolated individual system as long as the dependences are met, image files are okay with this definition
+
+**Repository (Repo)**: A repo is a place where you put many source code, can store versions, changelog, and more. Shared and Distributed. Can fork the repository without dealing with the initial branch it was taken from. A really good place for source code.
+
+**Diff between repo and directory?**: You give people permission through ACLs in Directories. For Repos, each node that has access to the Repo, has entire control, and this is called a local copy.
+
+The server plays an important part. A repo may or may not be linked to a server. Github, BitBucket, GitLab are all examples of this type of server. Git is interpreted by Git Version Control Software, all the servers run git servers behind them and run all related commands. 
+
+**Upstream:** The original or main reference of a repository, often the first instance of a repo. Generally put into a server, and this upstream node will be where machines copy it from. The other nodes that copy it are called downstream nodes.
+
+**Check In/Out (Fork?):** Making your own local copy of a file. You check out from a repository, and you check in from a repository. Check In is **Pushing**, Check Out is **Pulling** Downstream.
+
+Make Change -> Check In/Commit -> Push the Changes only -> Check Out (Pull New Changes)
+
+**Fork:** Relates to the server only. A server function/feature. Checks Out, Pulls, and copy's the version of the repo. Allocating own copy of an upstream in the server. Allocate write permissions, these are requirements for pushing changes into remote repo.
+ 
+**Delta:** The change in a repo. (Triangle)
+
+**Remote:** Uploaded, becomes upstream, can be on Github, and then allow users to copy.
+
+**Local:** Local On you machine. Called Downstream. Make change here, then you check it in, to your local, then you **PUSH** to the remote repo. Anytime we check in or check out, we only deal with the "change"
+
+**Pull:** Deals with only the changes.
+**Merge:** Adds changes, and change metadata. Contains Authorship, Related Comments, Timestamps, and more! 
+
+Don't push into Mirror Repo. Mirror Repos act as a median, read only.
+
+**Fetch:** Pulls the changes since the last pull.
+
+Licenses:
+**No Blanket Licenses** instead **Make a License for each file**
+**Year/Time** make sure that all the years line up, and include death! 
+**Restrictions** mention any additional ones, and use them if need be. 
+We can do GPL with exceptions!
